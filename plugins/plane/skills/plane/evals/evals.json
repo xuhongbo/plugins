@@ -1,0 +1,45 @@
+{
+  "skill_name": "plane",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create Plane work items for this implementation plan, but I did not give you a project id.",
+      "expected_output": "The agent should resolve project scope from repo-local .plane-project.json or ask for a project id before any project-scoped MCP call. It should not infer from project name or identifier.",
+      "files": [
+        ".plane-project.json"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Move all unfinished work from Sprint 23 to Sprint 24.",
+      "expected_output": "The agent should treat this as cycle planning, resolve project id, list/retrieve source and destination cycles, confirm the bulk transfer, then use cycle transfer/add tools rather than modules.",
+      "files": [
+        ".plane-project.json"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Group the auth revamp tasks together and write a short project note about the implementation plan.",
+      "expected_output": "The agent should use modules for feature grouping and pages for durable project documentation, checking feature availability and existing modules/pages before writing.",
+      "files": [
+        ".plane-project.json"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Triage new customer requests and accept the authentication bug reports into the backlog.",
+      "expected_output": "The agent should use intake tools first, inspect pending intake items, preserve source context when accepting items, and avoid creating normal work items directly before triage.",
+      "files": [
+        ".plane-project.json"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Post a project status update: we are blocked by API auth and the timeline is at risk.",
+      "expected_output": "The agent should use project-level status/update behavior rather than only a work-item comment, choose an At Risk-style update, and report scope plus writes performed.",
+      "files": [
+        ".plane-project.json"
+      ]
+    }
+  ]
+}

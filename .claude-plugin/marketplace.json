@@ -1,0 +1,24 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "ledu-plane",
+  "description": "Plane MCP plugin marketplace for the ledu workspace.",
+  "owner": {
+    "name": "Ledu"
+  },
+  "plugins": [
+    {
+      "name": "plane",
+      "description": "Manage Plane projects, work items, cycles, modules, labels, states, pages, and workspace data for the ledu workspace.",
+      "version": "0.2.9-ledu.1",
+      "source": "./plugins/plane",
+      "author": {
+        "name": "Plane Engineering",
+        "email": "support@plane.so",
+        "url": "https://plane.so/"
+      },
+      "category": "productivity",
+      "homepage": "https://plane.so/"
+    }
+  ]
+}
+

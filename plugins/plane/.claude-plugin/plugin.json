@@ -1,0 +1,22 @@
+{
+  "name": "plane",
+  "description": "Plane project management integration for Claude Code. Manage Plane workspaces, projects, cycles, modules, labels, states, and work items through the Plane MCP server.",
+  "version": "0.2.9-ledu.1",
+  "author": {
+    "name": "Plane Engineering",
+    "email": "support@plane.so",
+    "url": "https://plane.so/"
+  },
+  "homepage": "https://plane.so/",
+  "repository": "https://github.com/xuhongbo/plugins",
+  "license": "MIT",
+  "keywords": [
+    "plane",
+    "mcp",
+    "project-management",
+    "issues",
+    "work-items",
+    "self-hosted"
+  ]
+}
+

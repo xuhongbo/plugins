@@ -1,0 +1,48 @@
+{
+  "name": "plane",
+  "version": "0.2.9-ledu.1",
+  "description": "Manage Plane workspaces, projects, cycles, modules, and work items through the Plane MCP server.",
+  "author": {
+    "name": "Plane Engineering",
+    "email": "support@plane.so",
+    "url": "https://plane.so/"
+  },
+  "homepage": "https://plane.so/",
+  "repository": "https://github.com/xuhongbo/plugins",
+  "license": "MIT",
+  "keywords": [
+    "plane",
+    "mcp",
+    "project-management",
+    "issues",
+    "work-items",
+    "self-hosted"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Plane",
+    "shortDescription": "Manage Plane work items, projects, cycles, modules, and workspace data.",
+    "longDescription": "Use Plane from Codex through the Plane MCP server. This plugin is preconfigured for the enterprise Plane instance at https://plane.ledupeiyou.com and workspace slug ledu. Authorize it by providing only PLANE_ACCESS_TOKEN. Project-scoped MCP work requires an explicit project id or the repo-local plane-project.json binding.",
+    "developerName": "Plane Engineering",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://plane.so/",
+    "privacyPolicyURL": "https://plane.so/privacy/",
+    "termsOfServiceURL": "https://plane.so/terms-and-conditions/",
+    "brandColor": "#3F76FF",
+    "defaultPrompt": [
+      "Find my Plane work items for a project id and summarize blockers.",
+      "Create Plane work items for this implementation plan in the repo-bound project.",
+      "Review Plane project status for the current cycle."
+    ],
+    "composerIcon": "./assets/plane-icon.svg",
+    "logo": "./assets/plane-icon.svg",
+    "screenshots": []
+  }
+}
+
