@@ -21,8 +21,11 @@ This plugin is preconfigured for:
 - Do not call project-scoped Plane MCP tools until a concrete project id is known.
 - If the user does not provide a project id, read the repo-local .plane-project.json from the current repository root.
 - If .plane-project.json exists, state the bound project id, name, and identifier before project-scoped writes.
-- If no project id and no repo-local binding are available, ask the user for the project id.
-- Do not infer project scope from a project name, identifier, URL fragment, recent conversation, or memory alone.
+- If no project id and no repo-local binding are available, resolve the project by parsing a user-provided Plane URL and verifying it, or by listing projects and asking the user to choose.
+- Do not infer project scope from a project name, identifier, unverified URL fragment, recent conversation, or memory alone.
+- Do not ask for or modify workspace slug, base URL, or auth during repo-local project binding. The plugin workspace is fixed to ledu; only project id, project name, and project identifier may be completed.
+- After resolving a project id, use retrieve_project or the selected list_projects result to fill project name and project identifier automatically instead of asking the user to type them when Plane can provide them.
+- Ask before writing .plane-project.json. If the user declines, use the selected project only for the current task.
 - Do not store project binding in global Codex, Claude, shell, or user-level config.
 - Do not commit or echo PLANE_ACCESS_TOKEN.
 - Read before write. Resolve current IDs, states, labels, work item types, and feature availability before creating, updating, deleting, linking, or moving objects.
@@ -56,9 +59,12 @@ Use this order:
 
 1. Explicit project id from the user.
 2. repo-local .plane-project.json.
-3. Ask the user for the project id.
+3. Verified Plane URL that identifies a project.
+4. list_projects, then ask the user to choose.
 
-When using .plane-project.json, treat it as repo-local only. It is a convenience binding, not a global default.
+When using .plane-project.json, treat it as repo-local only. It is a convenience binding, not a global default. It may record the fixed workspace slug for context, but binding setup must not let users change workspace slug or base URL.
+
+After scope is resolved from a URL, list selection, or explicit project id, retrieve or reuse the current Project object and carry forward its id, name, and identifier. Ask the user only to choose or confirm the project, not to manually fill metadata that Plane already returned.
 
 ### 3. Classify Intent
 

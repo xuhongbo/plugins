@@ -1,6 +1,6 @@
 {
   "name": "plane",
-  "description": "Plane project management integration for Claude Code. Manage Plane workspaces, projects, cycles, modules, labels, states, and work items through the Plane MCP server.",
+  "description": "Plane project management integration for Claude Code. Preconfigured for the ledu workspace with PLANE_ACCESS_TOKEN auth; project scope is resolved from an explicit id, verified Plane link, repo-local binding, or project list choice.",
   "version": "0.2.9-ledu.1",
   "author": {
     "name": "Plane Engineering",
@@ -19,4 +19,3 @@
     "self-hosted"
   ]
 }
-

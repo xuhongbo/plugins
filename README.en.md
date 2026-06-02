@@ -17,6 +17,20 @@ The plugin lives in `plugins/plane/` and bundles the Plane MCP server plus both 
 
 The plugin is preconfigured for `https://plane.ledupeiyou.com` and workspace slug `ledu`. Users provide only `PLANE_ACCESS_TOKEN`.
 
+## Fastest Install
+
+If you are already in Codex or Claude Code, send the matching prompt directly to the AI agent.
+
+Codex:
+
+> Install the Ledu Plane plugin. The marketplace repository is `https://github.com/xuhongbo/plugins`, and the plugin name is `plane`. After installation, confirm that the bundled Plane MCP server is registered, and remind me to configure `PLANE_ACCESS_TOKEN`. Do not create or modify a repo-local Plane project binding unless I confirm.
+
+Claude Code:
+
+> Install the Ledu Plane plugin. The marketplace repository is `https://github.com/xuhongbo/plugins`, and the install target is `plane@ledu-plane`. After installation, run `/reload-plugins`, confirm that the bundled Plane MCP server is registered, and remind me to configure `PLANE_ACCESS_TOKEN`. Do not create or modify a repo-local Plane project binding unless I confirm.
+
+If the current AI agent cannot manage plugins, or if you prefer doing it manually, use the commands below.
+
 ## Prerequisites
 
 - Codex or Claude Code with plugin support.
@@ -25,7 +39,7 @@ The plugin is preconfigured for `https://plane.ledupeiyou.com` and workspace slu
 
 Do not commit `PLANE_ACCESS_TOKEN`. Configure it in your local agent environment or plugin auth surface.
 
-## Install In Codex
+## Manual Codex Install
 
 Register this repository as a Codex marketplace:
 
@@ -35,7 +49,7 @@ Open the Codex plugin UI or plugin command flow and install `plane` from the `Le
 
 After installation, set `PLANE_ACCESS_TOKEN` locally for Codex, then restart or re-enable the plugin so the bundled MCP server can start.
 
-## Install In Claude Code
+## Manual Claude Code Install
 
 From inside an interactive Claude Code session, register this repository as a marketplace:
 
@@ -59,17 +73,23 @@ That command follows the same project-id and read-before-write rules as the Code
 
 ## Repository Project Binding
 
-The repo-local default Plane project is stored in `.plane-project.json`. Keep that binding in this repository only; do not copy it into global Codex, Claude, shell, or user config.
+The repo-local Plane project binding is stored in `.plane-project.json`. Keep that binding in this repository only; do not copy it into global Codex, Claude, shell, or user config.
 
-Current default binding:
-
-- `workspace_slug`: `ledu`
-- project id: `2ff67848-d1d2-4b41-bc47-6c975294c479`
-- project name: `plane_feature`
-- project identifier: `PF`
-
-To regenerate it:
+To create it:
 
     node scripts/write-plane-project-binding.mjs
 
-When a user asks the plugin to call Plane MCP for project-scoped work, the agent must use an explicit project id from the user or read this repo-local binding first.
+The plugin workspace slug is fixed to `ledu`. The script does not ask for or allow workspace changes; it asks the user one question at a time for the project binding:
+
+- project id
+- project name
+- project identifier
+
+You can also generate it with explicit arguments:
+
+    node scripts/write-plane-project-binding.mjs \
+      --project-id <uuid> \
+      --project-name <name> \
+      --project-identifier <identifier>
+
+When a user asks the plugin to call Plane MCP for project-scoped work, the agent must resolve a concrete project id first: use an explicit project id or repo-local binding when available; otherwise verify a user-provided Plane link or list projects for the user to choose from. The agent should fill project name and project identifier from Plane results instead of asking the user to type associated metadata. Ask before saving a repo-local binding.

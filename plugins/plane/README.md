@@ -12,7 +12,7 @@ Do not commit PLANE_ACCESS_TOKEN. Configure it in the local agent environment or
 
 ## Project Scope
 
-Project-scoped MCP calls require a concrete Plane project id. For this repository, the default project binding is stored in the repo root at .plane-project.json.
+Project-scoped MCP calls require a concrete Plane project id. Agents should resolve it from an explicit project id, a verified Plane link, the repo-local .plane-project.json binding, or a user choice from list_projects. Repo-local binding only stores project id, project name, and project identifier for the fixed ledu workspace.
 
 Agents should read that file before using a default project and should not store the binding in global Codex, Claude, shell, or user-level config.
 

@@ -23,7 +23,7 @@
   "interface": {
     "displayName": "Plane",
     "shortDescription": "Manage Plane work items, projects, cycles, modules, and workspace data.",
-    "longDescription": "Use Plane from Codex through the Plane MCP server. This plugin is preconfigured for the enterprise Plane instance at https://plane.ledupeiyou.com and workspace slug ledu. Authorize it by providing only PLANE_ACCESS_TOKEN. Project-scoped MCP work requires an explicit project id or the repo-local plane-project.json binding.",
+    "longDescription": "Use Plane from Codex through the Plane MCP server. This plugin is preconfigured for the enterprise Plane instance at https://plane.ledupeiyou.com and workspace slug ledu. Authorize it by providing only PLANE_ACCESS_TOKEN. Project-scoped MCP work requires a concrete project id resolved from an explicit id, a verified Plane link, the repo-local plane-project.json binding, or a user choice from list_projects.",
     "developerName": "Plane Engineering",
     "category": "Productivity",
     "capabilities": [
@@ -37,7 +37,7 @@
     "brandColor": "#3F76FF",
     "defaultPrompt": [
       "Find my Plane work items for a project id and summarize blockers.",
-      "Create Plane work items for this implementation plan in the repo-bound project.",
+      "Create Plane work items for this implementation plan in the selected or repo-bound project.",
       "Review Plane project status for the current cycle."
     ],
     "composerIcon": "./assets/plane-icon.svg",
@@ -45,4 +45,3 @@
     "screenshots": []
   }
 }
-
